@@ -1,0 +1,10 @@
+package: bricky
+version: '0.0.1'
+author: 'Friends Of REDAXO'
+supportpage: https://github.com/FriendsOfREDAXO/quick_navigation
+
+requires:
+    packages:
+        mblock: '2.1.0'
+    redaxo: '^5.6.0'
+
