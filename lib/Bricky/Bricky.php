@@ -28,6 +28,7 @@ class Bricky
     public function addElement(Brick $instance)
     {
         $this->bricks[] = $instance;
+        \rex_fragment::addDirectory($instance->getFragmentDir());
     }
 
 
