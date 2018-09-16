@@ -49,7 +49,11 @@ class Card extends Brick
 
     public function getBackendOutput(array $brickValues)
     {
-        return $this->getFrontendOutput($brickValues);
+        $fragment = new \rex_fragment();
+        foreach ($brickValues as $var => $value) {
+            $fragment->setVar($var, $value, false);
+        }
+        return $fragment->parse('brick_card_backend_output.php');
     }
 
     public function getFrontendOutput(array $brickValues)
