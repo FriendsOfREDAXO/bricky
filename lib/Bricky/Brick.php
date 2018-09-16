@@ -25,7 +25,14 @@ abstract class Brick
 
     public function getPrefixedName()
     {
-        return strtoupper(str_replace(__NAMESPACE__.'\\', '', static::class)).self::PREFIX;
+        $class = (new \ReflectionClass($this))->getShortName();
+        return strtoupper($class).self::PREFIX;
+    }
+
+    public function getFragmentDir()
+    {
+        $class = (new \ReflectionClass($this))->getShortName();
+        return __DIR__.'/Brick/'.$class.'/fragments/';
     }
 
 }
