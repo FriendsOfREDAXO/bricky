@@ -18,6 +18,8 @@ Bricky::getInstance()->addElement(new Card());
 Bricky::getInstance()->addElement(new Headline());
 Bricky::getInstance()->addElement(new Image());
 
+\rex_fragment::addDirectory(\rex_path::addon('project', 'fragments/'));
+
 if (rex::isBackend() && rex::getUser()) {
     //Bricky::boot();
 }
