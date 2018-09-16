@@ -11,42 +11,58 @@
 
 namespace Bricky\Brick;
 
-class Headline extends Brick
+class Image extends Brick
 {
     public function getName()
     {
-        return 'Headline';
+        return 'Image';
     }
 
     public function getInput()
     {
         $s = new \rex_select();
-        $s->setName('BRICK_INPUT_VALUE[TAG]');
-        $s->addOptions(['h1' => 'H1', 'h2' => 'H2', 'h3' => 'H3']);
+        $s->setName('BRICK_INPUT_VALUE[CAPTION]');
+        $s->addOptions(['0' => 'nein', '1' => 'ja']);
         return '
             <div class="form-group">
                 <label class="col-md-3">
-                    Text
+                    Bild
                 </label>
                 <div class="col-md-6">
-                    <input class="form-control" name="BRICK_INPUT_VALUE[TEXT]" type="text" />
+                    BRICK_MEDIA[id=1 category=2]
                 </div>
                 <div class="col-md-3">
                     <div class="rex-select-style">
                         '.$s->get().'
                     </div>
                 </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3">
+                    Hover Bild
+                </label>
+                <div class="col-md-6">
+                    BRICK_MEDIA[id=2]
+                </div>
             </div>';
     }
 
     public function getBackendOutput(array $brickValues)
     {
-        return $this->getFrontendOutput($brickValues);
+        $return = '';
+        $media = \rex_media::get($brickValues['MEDIA_1']);
+        if ($media) {
+            $return .= $media->toImage();
+        }
+        $media = \rex_media::get($brickValues['MEDIA_2']);
+        if ($media) {
+            $return .= $media->toImage();
+        }
+        return $return;
     }
 
     public function getFrontendOutput(array $brickValues)
     {
-        return sprintf('<%2$s>%1$s</%2$s>', $brickValues['TEXT'], $brickValues['TAG']);
     }
 
 }

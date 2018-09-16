@@ -26,7 +26,7 @@ class Card extends Brick
                     Titel
                 </label>
                 <div class="col-md-9">
-                    <input class="form-control" name="BRICK_INPUT_VALUE[CARD_TITLE]" type="text" />
+                    <input class="form-control" name="BRICK_INPUT_VALUE[TITLE]" type="text" />
                 </div>
             </div>
             <div class="form-group">
@@ -34,19 +34,39 @@ class Card extends Brick
                     Text
                 </label>
                 <div class="col-md-9">
-                    <textarea class="form-control" name="BRICK_INPUT_VALUE[CARD_TEXT]" rows="6"></textarea>
+                    <textarea class="form-control" name="BRICK_INPUT_VALUE[TEXT]" rows="6"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3">
+                    Link setzen
+                </label>
+                <div class="col-md-9">
+                    BRICK_LINK[id=1]
                 </div>
             </div>';
     }
 
-    public function getBackendOutput()
+    public function getBackendOutput(array $brickValues)
     {
-        return '<h2>BRICK_VALUE[CARD_TITLE]</h2><p>BRICK_VALUE[CARD_TEXT]</p>';
+        return $this->getFrontendOutput($brickValues);
     }
 
-    public function getFrontendOutput()
+    public function getFrontendOutput(array $brickValues)
     {
-        return '<h2>BRICK_VALUE[CARD_TITLE]</h2><p>BRICK_VALUE[CARD_TEXT]</p>';
+        $return = '';
+        if ($brickValues['TITLE'] != '') {
+            $return .= sprintf('<h2>%s</h2>', $brickValues['TITLE']);
+        }
+        if ($brickValues['TEXT'] != '') {
+            $return .= sprintf('<p>%s</p>', nl2br($brickValues['TEXT']));
+        }
+        if ($article = \rex_article::get($brickValues['LINK_1'])) {
+            $return = sprintf('<a href="%s">%s</a>', $article->getUrl(), $return);
+        }
+
+
+        return $return;
     }
 
 }

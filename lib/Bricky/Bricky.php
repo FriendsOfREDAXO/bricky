@@ -58,15 +58,40 @@ class Bricky
 
         $form = '';
         foreach ($bricks as $brick) {
-            $form .= sprintf('
+
+            $prefixedName = $brick->getPrefixedName();
+
+            $brickForm = sprintf('
                 <fieldset class="form-horizontal">
                     <legend>%s</legend>
                     %s
                 </fieldset>            
             ', $brick->getName(), $brick->getInput());
+
+            preg_match_all('@(?<complete>BRICK_(?<widget>MEDIA|MEDIALIST|LINK|LINKLIST)\[(?<args>.*?)\])@', $brickForm, $matches, PREG_SET_ORDER | PREG_OFFSET_CAPTURE);
+            if ($matches) {
+                foreach ($matches as $match) {
+                    $args = \rex_string::split($match['args'][0]);
+                    if (!isset($args['id'])) {
+                        continue;
+                    }
+                    $id = $args['id'];
+                    unset($args['id']);
+
+                    $widgetClass = '\rex_var_'.strtolower($match['widget'][0]);
+                    $widget = $widgetClass::getWidget(
+                        $id,
+                        'REX_INPUT_VALUE['.$valueId.'][0]['.$prefixedName.$match['widget'][0].'_'.$id.']',
+                        '', // kein Value übergeben, wird von MBlock gesetztz
+                        $args);
+                    $brickForm = str_replace($match['complete'][0], $widget, $brickForm);
+                }
+            }
+
+            $brickForm = str_replace('BRICK_INPUT_VALUE[', 'REX_INPUT_VALUE['.$valueId.'][0]['.$prefixedName, $brickForm);
+            $form .= $brickForm;
         }
 
-        $form = str_replace('BRICK_INPUT_VALUE', 'REX_INPUT_VALUE['.$valueId.'][0]', $form);
         return \MBlock::show($valueId, $form);
     }
 
@@ -78,26 +103,39 @@ class Bricky
             return null;
         }
 
-        $output = '';
-        foreach ($blocks as $blockIndex => $block) {
-            $searcher = [];
-            $replacer = [];
-            foreach ($block as $blockKey => $blockValue) {
-                if (is_string($blockValue)) {
-                    $searcher[] = 'BRICK_VALUE['.$blockKey.']';
-                    $replacer[] = $blockValue;
-                } elseif (is_array($blockValue)) {
-                    foreach ($blockValue as $search => $replace) {
-                        $searcher[] = 'BRICK_VALUE['.$blockKey.']['.$search.']';
-                        $replacer[] = $replace;
-                    }
-                }
-            }
-            foreach ($bricks as $brick) {
-                $parse = $brick->getBackendOutput();
-                $output .= str_replace($searcher, $replacer, $parse);
+        $blocks = $this->normalizeOutputBlocks($blocks);
+
+        $blockKeys = array_flip(array_keys($blocks[0]));
+        $usedBricks = [];
+        foreach ($bricks as $brick) {
+            if (isset($blockKeys[$brick->getPrefixedName()])) {
+                $usedBricks[$brick->getPrefixedName()] = $brick;
             }
         }
+
+
+        $output = '';
+        foreach ($blocks as $blockIndex => $block) {
+            foreach ($block as $brickPrefixedName => $blockValues) {
+                $brick = $usedBricks[$brickPrefixedName];
+                $output .= $brick->getBackendOutput($blockValues);
+            }
+        }
+
         return $output;
+    }
+
+    protected function normalizeOutputBlocks(array $blocks)
+    {
+        foreach ($blocks as $blockIndex => $block) {
+            foreach ($block as $blockKey => $blockValue) {
+                $pos = strpos($blockKey, Brick::PREFIX) + strlen(Brick::PREFIX);
+                $key = substr($blockKey, 0, $pos);
+                $subKey = substr($blockKey, $pos);
+                $blocks[$blockIndex][$key][$subKey] = $blockValue;
+                unset($blocks[$blockIndex][$blockKey]);
+            }
+        }
+        return $blocks;
     }
 }

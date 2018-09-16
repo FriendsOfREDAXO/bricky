@@ -13,12 +13,19 @@ namespace Bricky\Brick;
 
 abstract class Brick
 {
+    const PREFIX = '__';
+
     abstract public function getName();
 
     abstract public function getInput();
 
-    abstract public function getBackendOutput();
+    abstract public function getBackendOutput(array $brickValues);
 
-    abstract public function getFrontendOutput();
+    abstract public function getFrontendOutput(array $brickValues);
+
+    public function getPrefixedName()
+    {
+        return strtoupper(str_replace(__NAMESPACE__.'\\', '', static::class)).self::PREFIX;
+    }
 
 }
