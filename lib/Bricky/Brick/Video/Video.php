@@ -22,7 +22,7 @@ class Video extends Brick
     {
         $s = new \rex_select();
         $s->setName('BRICK_INPUT_VALUE[SOURCE]');
-        $s->addOptions(['YouTube' => 'YouTube', 'vimeo' => 'Vimeo']);
+        $s->addOptions(['youtube' => 'YouTube', 'vimeo' => 'Vimeo']);
         return '
             <p>
               <a data-toggle="collapse" href="#VideoInfo" aria-expanded="false" aria-controls="collapseExample">
