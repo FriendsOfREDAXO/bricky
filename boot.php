@@ -12,11 +12,13 @@
 use Bricky\Brick\Card;
 use Bricky\Brick\Headline;
 use Bricky\Brick\Image;
+use Bricky\Brick\Video;
 use Bricky\Bricky;
 
 Bricky::getInstance()->addElement(new Card());
 Bricky::getInstance()->addElement(new Headline());
 Bricky::getInstance()->addElement(new Image());
+Bricky::getInstance()->addElement(new Video());
 
 \rex_fragment::addDirectory(\rex_path::addon('project', 'fragments/'));
 
