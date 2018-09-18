@@ -15,6 +15,8 @@
     ->ensureColumn(new \rex_sql_column('module_name', 'VARCHAR(255)'))
     ->ensureColumn(new \rex_sql_column('module_id', 'INT(11)'))
     ->ensureColumn(new \rex_sql_column('bricks', 'TEXT', true))
+    ->ensureColumn(new \rex_sql_column('grids', 'TEXT', true))
+    ->ensureColumn(new \rex_sql_column('view', 'ENUM("NORMAL","SLICES")'))
     ->ensureColumn(new \rex_sql_column('createdate', 'DATETIME'))
     ->ensureColumn(new \rex_sql_column('createuser', 'VARCHAR(255)'))
     ->ensureColumn(new \rex_sql_column('updatedate', 'DATETIME'))

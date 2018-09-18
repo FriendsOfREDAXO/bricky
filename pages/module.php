@@ -87,6 +87,18 @@ if ($func == '') {
         $field->addOption($brick->getName(), $brick->getClassName());
     }
 
+    $field = $form->addCheckboxField('grids');
+    $field->setLabel($this->i18n('grid'));
+    foreach (Bricky::getInstance()->getGrids() as $grid) {
+        $field->addOption($grid, $grid);
+    }
+
+    $field = $form->addRadioField('view');
+    $field->setLabel($this->i18n('view'));
+    foreach (Bricky::getInstance()->getViews() as $view) {
+        $field->addOption(ucfirst(mb_strtolower($view)), $view);
+    }
+
     $content = $form->get();
 
     $fragment = new rex_fragment();

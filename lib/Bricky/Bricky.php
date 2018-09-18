@@ -24,6 +24,23 @@ class Bricky
      */
     private $bricks = [];
 
+    private $grids = [
+        '12',
+        '6-6',
+        '8-4',
+        '4-8',
+        '4-4-4',
+        '6-3-3',
+        '3-6-3',
+        '3-3-6',
+        '3-3-3-3',
+    ];
+
+    private $views = [
+        'NORMAL',
+        'SLICES',
+    ];
+
 
     public function addBrick(Brick $instance)
     {
@@ -39,6 +56,16 @@ class Bricky
         }
 
         return $this->bricks;
+    }
+
+    public function getGrids()
+    {
+        return $this->grids;
+    }
+
+    public function getViews()
+    {
+        return $this->views;
     }
 
     public static function getModule($moduleId)
