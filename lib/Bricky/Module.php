@@ -110,6 +110,16 @@ class Module
 
     public function getBackendOutput(array $blocks)
     {
+        return $this->generateOutput($blocks, 'getBackendOutput');
+    }
+
+    public function getFrontendOutput(array $blocks)
+    {
+        return $this->generateOutput($blocks, 'getFrontendOutput');
+    }
+
+    protected function generateOutput(array $blocks, $method)
+    {
         $bricks = $this->getBricks();
         if(!$bricks) {
             return null;
@@ -125,21 +135,20 @@ class Module
             }
         }
 
-
         $output = '';
         foreach ($blocks as $blockIndex => $block) {
             foreach ($block as $brickPrefixedName => $blockValues) {
+                if (!isset($usedBricks[$brickPrefixedName])) {
+                    // Slices können noch Bricks enthalten,
+                    // die nicht mehr zum Modul gehören
+                    continue;
+                }
                 $brick = $usedBricks[$brickPrefixedName];
-                $output .= $brick->getBackendOutput($blockValues);
+                $output .= $brick->{$method}($blockValues);
             }
         }
 
         return $output;
-    }
-
-    public function getFrontendOutput(array $blocks)
-    {
-        return null;
     }
 
     protected function normalizeOutputBlocks(array $blocks)
