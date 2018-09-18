@@ -1,4 +1,6 @@
-bricky_bricks = verfügbare Elemente
+bricks_select_notice = Wird ein Element abgewählt, kann es passieren das bisher angelegte Slices beim nächsten Speichern ihr Daten verlieren.
+bricky_bricks_registered = registrierte Elemente
+bricky_bricks_saved = bisher zugewiesene Elemente
 bricky_module = Module
 bricky_module_name = Modulname
 bricky_module_exists = Dieses Modul existiert bereits

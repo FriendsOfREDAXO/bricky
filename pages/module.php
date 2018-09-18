@@ -81,12 +81,32 @@ if ($func == '') {
 
 
     $field = $form->addSelectField('bricks');
-    $field->setLabel($this->i18n('bricks'));
+    $field->setLabel($this->i18n('bricks_registered'));
+    $field->setNotice($this->i18n('bricks_select_notice'));
     $select = $field->getSelect();
     $select->setMultiple();
+
+    $registeredBricks = [];
     foreach (Bricky::getInstance()->getBricks() as $brick) {
         $select->addOption($brick->getName(), $brick->getClassName());
+        $registeredBricks[$brick->getClassName()] = $brick->getName();
     }
+
+    $field = $form->addReadOnlyField('bricks');
+    $field->setAttribute('class', 'hidden');
+    $savedBricks =  explode('|', trim($field->getValue(), '|'));
+    foreach ($savedBricks as $index => $savedBrick) {
+        if (isset($registeredBricks[$savedBrick])) {
+            $savedBricks[$index] = $registeredBricks[$savedBrick];
+        }
+    }
+    $field = $form->addRawField(
+        sprintf(
+            '<dl class="rex-form-group form-group">
+                <dt><label class="control-label">%s</label></dt>
+                <dd><pre class="rex-code">%s</pre></dd>
+            </dl>', $this->i18n('bricks_saved'), implode('<br />', $savedBricks))
+    );
 
     $content = $form->get();
 
