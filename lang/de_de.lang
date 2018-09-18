@@ -3,7 +3,9 @@ bricky_bricks_registered = registrierte Elemente
 bricky_bricks_saved = bisher zugewiesene Elemente
 bricky_module = Module
 bricky_module_name = Modulname
+bricky_module_id = Modul ID
 bricky_module_exists = Dieses Modul existiert bereits
 bricky_module_not_exists = Modul existiert nicht
 bricky_settings = Einstellungen
 bricky_title = Bricky
+translate:module_id
