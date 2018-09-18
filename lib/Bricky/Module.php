@@ -11,6 +11,8 @@
 
 namespace Bricky;
 
+use Bricky\Brick\Brick;
+
 class Module
 {
     const TABLE_NAME = 'bricky_module';
