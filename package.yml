@@ -8,3 +8,9 @@ requires:
         mblock: '2.1.0'
     redaxo: '^5.6.0'
 
+page:
+    title: 'translate:title'
+    perm: bricky[]
+    pjax: false
+    subpages:
+        module: { title: 'translate:module' }

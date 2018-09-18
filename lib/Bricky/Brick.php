@@ -23,16 +23,19 @@ abstract class Brick
 
     abstract public function getFrontendOutput(array $brickValues);
 
+    public function getClassName()
+    {
+        return (new \ReflectionClass($this))->getShortName();
+    }
+
     public function getPrefixedName()
     {
-        $class = (new \ReflectionClass($this))->getShortName();
-        return strtoupper($class).self::PREFIX;
+        return strtoupper($this->getClassName()).self::PREFIX;
     }
 
     public function getFragmentDir()
     {
-        $class = (new \ReflectionClass($this))->getShortName();
-        return __DIR__.'/Brick/'.$class.'/fragments/';
+        return __DIR__.'/Brick/'.$this->getClassName().'/fragments/';
     }
 
 }
