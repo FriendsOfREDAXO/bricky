@@ -24,15 +24,21 @@ class Bricky
      */
     private $bricks = [];
 
-    private $grids = [
+    private $availableGrids = [
         '12',
-        '6-6',
+        '10-2',
+        '9-3',
         '8-4',
+        '7-5',
+        '6-6',
+        '5-7',
         '4-8',
-        '4-4-4',
+        '3-9',
+        '2-10',
         '6-3-3',
         '3-6-3',
         '3-3-6',
+        '4-4-4',
         '3-3-3-3',
     ];
 
@@ -41,6 +47,8 @@ class Bricky
         'SLICES',
     ];
 
+    const VALUE_ID_CTYPES_ORDER = 19;
+    const VALUE_ID_SELECTED_GRID = 20;
 
     public function addBrick(Brick $instance)
     {
@@ -58,9 +66,9 @@ class Bricky
         return $this->bricks;
     }
 
-    public function getGrids()
+    public function getAvailableGrids()
     {
-        return $this->grids;
+        return $this->availableGrids;
     }
 
     public function getViews()
@@ -80,7 +88,10 @@ class Bricky
             "\n".
             'use Bricky\Bricky;'."\n".
             "\n".
-            'echo Bricky::getModule(\'REX_MODULE_ID\')->getInput(1);'."\n";
+            'echo Bricky::getModule(\'REX_MODULE_ID\')'."\n".
+            '    ->setCtypesOrder(\'REX_VALUE['.self::VALUE_ID_CTYPES_ORDER.']\')'."\n".
+            '    ->setSelectedGrid(\'REX_VALUE['.self::VALUE_ID_SELECTED_GRID.']\')'."\n".
+            '    ->getInput();'."\n";
     }
 
     public static function getModuleOutput()

@@ -89,7 +89,7 @@ if ($func == '') {
 
     $field = $form->addCheckboxField('grids');
     $field->setLabel($this->i18n('grid'));
-    foreach (Bricky::getInstance()->getGrids() as $grid) {
+    foreach (Bricky::getInstance()->getAvailableGrids() as $grid) {
         $field->addOption($grid, $grid);
     }
 

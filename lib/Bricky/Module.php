@@ -21,7 +21,14 @@ class Module
     private static $modules = [];
 
     private $bricks;
+    private $grids;
+    private $maxCtypes;
+    private $minCtypes;
     private $module_id;
+    private $view;
+
+    private $ctypesOrder;
+    private $selectedGrid;
 
 
     private function __construct()
@@ -46,6 +53,10 @@ class Module
         return $moduleBricks;
     }
 
+    public function getGrid()
+    {
+    }
+
     public function validateValueId($valueId)
     {
         $valueId = (int)$valueId;
@@ -55,24 +66,30 @@ class Module
         return $valueId;
     }
 
-    public function getInput($valueId)
+    public function getInput()
     {
         $bricks = $this->getBricks();
-        if(!$bricks || !$this->validateValueId($valueId)) {
-            return null;
-        }
+        //if(!$bricks || !$this->validateValueId($valueId)) {
+        //    return null;
+        //}
 
         $form = '';
+        // select für die Slices darstellung
+        $bricksSelectOptions = [];
         foreach ($bricks as $brick) {
             $prefixedName = $brick->getPrefixedName();
 
+            // Key Value Paar vertauscht überegben, damit später korrekt alphabetisch sortiert werden kann
+            $bricksSelectOptions['- '.rex_escape($brick->getName())] = rex_escape($brick->getClassName());
+
             $brickForm = sprintf('
-                <fieldset class="form-horizontal">
+                <fieldset class="form-horizontal" data-bricky-selectable="%s">
                     <legend>%s</legend>
                     %s
                 </fieldset>            
-            ', $brick->getName(), $brick->getInput());
+            ', rex_escape($brick->getClassName()), rex_escape($brick->getName()), $brick->getInput());
 
+            // Widgets finden und anpassen
             preg_match_all('@(?<complete>BRICK_(?<widget>MEDIA|MEDIALIST|LINK|LINKLIST)\[(?<args>.*?)\])@', $brickForm, $matches, PREG_SET_ORDER | PREG_OFFSET_CAPTURE);
             if ($matches) {
                 foreach ($matches as $match) {
@@ -86,18 +103,60 @@ class Module
                     $widgetClass = '\rex_var_'.strtolower($match['widget'][0]);
                     $widget = $widgetClass::getWidget(
                         $id,
-                        'REX_INPUT_VALUE['.$valueId.'][0]['.$prefixedName.$match['widget'][0].'_'.$id.']',
-                        '', // kein Value übergeben, wird von MBlock gesetztz
+                        'REX_INPUT_VALUE[{{{ VALUE_ID }}}][0]['.$prefixedName.$match['widget'][0].'_'.$id.']',
+                        '', // kein Value übergeben, wird von MBlock gesetzt
                         $args);
                     $brickForm = str_replace($match['complete'][0], $widget, $brickForm);
                 }
             }
 
-            $brickForm = str_replace('BRICK_INPUT_VALUE[', 'REX_INPUT_VALUE['.$valueId.'][0]['.$prefixedName, $brickForm);
+            // Inputs finden und anpassen
+            $brickForm = str_replace('BRICK_INPUT_VALUE[', 'REX_INPUT_VALUE[{{{ VALUE_ID }}}][0]['.$prefixedName, $brickForm);
             $form .= $brickForm;
         }
 
-        return \MBlock::show($valueId, $form);
+        if ($this->isSliceView()) {
+            // alphabetisch sortieren und Key-Value-Pait vertauschen, damit rex_select korrekt value und label setzen kann
+            ksort($bricksSelectOptions);
+            $bricksSelectOptions = array_flip($bricksSelectOptions);
+
+            $bricksSelect = new \rex_select();
+            $bricksSelect->setName('REX_INPUT_VALUE[{{{ VALUE_ID }}}][0][BRICK_SELECT]');
+            $bricksSelect->addOption('Brick wählen', '');
+            $bricksSelect->addOptions($bricksSelectOptions);
+
+            $bricksSelectForm = sprintf('
+                <fieldset class="form-horizontal" data-bricky-select-a-brick>
+                    <legend>kein Element ausgewählt</legend>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Auswahl</label>
+                        <div class="col-md-3">
+                            <div class="rex-select-style">
+                                %s
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>            
+            ', $bricksSelect->get());
+
+            $form = $bricksSelectForm.$form;
+        }
+
+        $ctypes = [];
+        for ($i = 1; $i <= $this->maxCtypes; $i++) {
+            $ctypes[$i] = \MBlock::show($i, str_replace('{{{ VALUE_ID }}}', $i, $form));
+        }
+
+        $fragment = new \rex_fragment();
+        $fragment->setVar('minCtypes', $this->minCtypes);
+        $fragment->setVar('maxCtypes', $this->maxCtypes);
+        $fragment->setVar('grids', $this->grids);
+        $fragment->setVar('view', $this->view);
+        $fragment->setVar('selectedGrid', $this->selectedGrid);
+        $fragment->setVar('ctypes', $ctypes, false);
+        $fragment->setVar('ctypesOrder', $this->ctypesOrder);
+
+        return $fragment->parse('bricky_module_input.php');
     }
 
     public function getOutput(array $blocks)
@@ -128,6 +187,8 @@ class Module
         $blocks = $this->normalizeOutputBlocks($blocks);
 
         $blockKeys = array_flip(array_keys($blocks[0]));
+
+        // alle im Modul verwendeten Bricks sammeln
         $usedBricks = [];
         foreach ($bricks as $brick) {
             if (isset($blockKeys[$brick->getPrefixedName()])) {
@@ -151,6 +212,28 @@ class Module
         return $output;
     }
 
+    /**
+     * Erstellt ein nested Array anhand des Prefixes
+     *  $blocks = [
+     *      0 => [
+     *          'CARD__TITLE' => 'Title'
+     *          'CARD__TEXT' => 'Description text'
+     *      ]
+     *  ]
+     *
+     *  return [
+     *      0 => [
+     *          'CARD__' => [
+     *              'TITLE' => 'Title'
+     *              'TEXT' => 'Description text'
+     *          ]
+     *      ]
+     *  ]
+     *
+     * @param array $blocks
+     *
+     * @return array
+     */
     protected function normalizeOutputBlocks(array $blocks)
     {
         foreach ($blocks as $blockIndex => $block) {
@@ -163,6 +246,23 @@ class Module
             }
         }
         return $blocks;
+    }
+
+    public function setCtypesOrder($value)
+    {
+        $this->ctypesOrder = $value;
+        return $this;
+    }
+
+    public function setSelectedGrid($value)
+    {
+        $this->selectedGrid = $value;
+        return $this;
+    }
+
+    protected function isSliceView()
+    {
+        return $this->view == 'SLICES';
     }
 
     /**
@@ -224,13 +324,41 @@ class Module
                         case 'bricks':
                             $brickyModules[$id][$fieldName] = explode('|', trim($brickyModule->getValue($fieldName), '|'));
                             break;
+                        case 'grids':
+                            $grids = explode('|', trim($brickyModule->getValue($fieldName), '|'));
+                            $availableGrids = Bricky::getInstance()->getAvailableGrids();
+                            foreach ($grids as $index => $grid) {
+                                if (!in_array($grid, $availableGrids)) {
+                                    unset($grids[$index]);
+                                }
+                            }
+
+                            $minCtypes = 1;
+                            $maxCtypes = 1;
+                            if (count($grids) < 1) {
+                                $grids = null;
+                            } else {
+                                $min = 1;
+                                $max = 1;
+                                foreach ($grids as $grid) {
+                                    $count = substr_count($grid, '-') + 1;
+                                    $min = $count > $min ? $min : $count;
+                                    $max = $count > $max ? $count : $max;
+                                }
+                                $minCtypes = $min;
+                                $maxCtypes = $max;
+                            }
+
+                            $brickyModules[$id][$fieldName] = $grids;
+                            $brickyModules[$id]['minCtypes'] = $minCtypes;
+                            $brickyModules[$id]['maxCtypes'] = $maxCtypes;
+                            break;
                         default:
                             $brickyModules[$id][$fieldName] = $brickyModule->getValue($fieldName);
                             break;
                     }
                 }
             }
-
             $file = \rex_path::addonCache('bricky', 'modules.cache');
             if (\rex_file::putCache($file, $brickyModules) === false) {
                 throw new \rex_exception('Bricky cache file could not be generated');
