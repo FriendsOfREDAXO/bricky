@@ -79,7 +79,7 @@ class Module
         foreach ($bricks as $brick) {
             $prefixedName = $brick->getPrefixedName();
 
-            // Key Value Paar vertauscht überegben, damit später korrekt alphabetisch sortiert werden kann
+            // Key-Value-Pair vertauscht überegben, damit später korrekt alphabetisch sortiert werden kann
             $bricksSelectOptions['- '.rex_escape($brick->getName())] = rex_escape($brick->getClassName());
 
             $brickForm = sprintf('
@@ -116,7 +116,7 @@ class Module
         }
 
         if ($this->isSliceView()) {
-            // alphabetisch sortieren und Key-Value-Pait vertauschen, damit rex_select korrekt value und label setzen kann
+            // alphabetisch sortieren und Key-Value-Pair vertauschen, damit rex_select korrekt value und label setzen kann
             ksort($bricksSelectOptions);
             $bricksSelectOptions = array_flip($bricksSelectOptions);
 
