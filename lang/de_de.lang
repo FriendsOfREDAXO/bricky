@@ -6,6 +6,7 @@ bricky_module = Module
 bricky_module_exists = Dieses Modul existiert bereits
 bricky_module_id = Modul Id
 bricky_module_name = Modulname
+bricky_bricks = Bricks
 bricky_module_not_exists = Modul existiert nicht
 bricky_title = Bricky
 bricky_view = Darstellung

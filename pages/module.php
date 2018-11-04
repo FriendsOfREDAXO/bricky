@@ -43,6 +43,7 @@ if ($func == '') {
 
     $list->setColumnLabel('module_id', $this->i18n('module_id'));
     $list->setColumnLabel('name', $this->i18n('module_name'));
+    $list->setColumnLabel('bricks', $this->i18n('bricks'));
 
     $list->addColumn($this->i18n('function'), '<i class="rex-icon rex-icon-edit"></i> '.$this->i18n('edit'));
     $list->setColumnLayout($this->i18n('function'), ['<th class="rex-table-action" colspan="2">###VALUE###</th>', '<td class="rex-table-action">###VALUE###</td>']);
