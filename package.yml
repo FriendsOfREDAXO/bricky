@@ -12,5 +12,6 @@ page:
     title: 'translate:title'
     perm: bricky[]
     pjax: false
+    icon: rex-icon fa-th
     subpages:
         module: { title: 'translate:module' }

@@ -1,5 +1,4 @@
 # Bricky
-Noch geheim … stimmt das noch @olien ?
 
 Module die Bricky nutzen, werden über Bricky selbst verwaltet.
 Das REDAXO-Modul wird automatisch erstellt und wird mit den sogenannten Bricks gefüttert.
