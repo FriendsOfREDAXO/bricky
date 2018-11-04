@@ -10,6 +10,8 @@ bricky_module_not_exists = Modul existiert nicht
 bricky_title = Bricky
 bricky_view = Darstellung
 
+bricky_info = Info
+
 bricky_module_input_ctype_settings = Einstellungen
 bricky_module_input_ctype_settings_grid = Raster
 bricky_module_input_ctype_settings_select = Auswahl

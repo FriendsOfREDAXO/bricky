@@ -15,3 +15,6 @@ page:
     icon: rex-icon fa-th
     subpages:
         module: { title: 'translate:module' }
+        info:
+            title: 'translate:bricky_info'
+            itemclass: 'pull-right'
