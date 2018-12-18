@@ -2,11 +2,14 @@
     <input data-bricky="ctypesOrder" type="hidden" name="REX_INPUT_VALUE[<?= Bricky\Bricky::VALUE_ID_CTYPES_ORDER ?>]" value="<?= $this->ctypesOrder ?>" />
     <div class="nav rex-page-nav">
         <ul class="nav nav-tabs" data-bricky="ctypes">
-            <?php for ($i = 1; $i <= $this->maxCtypes; $i++): ?>
-            <li data-id="<?= $i ?>">
-                <a id="tab-<?= $i ?>" href="#bricky-ctype-content-<?= $i ?>" data-toggle="tab">
-                    <i>B<?= $i ?></i>
-                    <span>Bereich <?= $i ?></span>
+            <?php
+            $ctypesOrderNew = explode(',',$this->ctypesOrder);
+            for ($i = 1; $i <= $this->maxCtypes; $i++): ?>
+
+            <li data-id="<?= $ctypesOrderNew[($i-1)] ?>">
+                <a id="tab-<?= $ctypesOrderNew[($i-1)] ?>" href="#bricky-ctype-content-<?= $ctypesOrderNew[($i-1)] ?>" data-toggle="tab">
+                    <i>B<?= $ctypesOrderNew[($i-1)] ?></i>
+                    <span>Bereich <?= $ctypesOrderNew[($i-1)] ?></span>
                 </a>
             </li>
             <?php endfor; ?>
