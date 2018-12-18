@@ -5,7 +5,7 @@ supportpage: https://github.com/FriendsOfREDAXO/bricky
 
 requires:
     packages:
-        mblock: '2.1.0'
+    mblock: '^3.0.0'
     redaxo: '^5.6.0'
 
 page:

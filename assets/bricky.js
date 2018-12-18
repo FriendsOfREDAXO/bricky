@@ -1,5 +1,6 @@
 
-$(document).on('rex:ready', function (event, container) {
+$(document).on('rex:ready', function (e, container) {
+
 
     function brickyToggleCtypeContent($grid) {
         $grid = $grid.split('-');
@@ -25,7 +26,8 @@ $(document).on('rex:ready', function (event, container) {
                 $(this).hide();
             });
 
-            $(document).on('mblock:add', function (event, container) {
+
+            $(document).on('rex:ready', function (event, container) {
                 $('[data-bricky-select-a-brick] option:selected').each(function () {
                     var value = $(this).val();
                     if (value === '') {

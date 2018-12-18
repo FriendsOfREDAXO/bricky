@@ -127,6 +127,20 @@ class Module
 
             $bricksSelectForm = sprintf('
                 <fieldset class="form-horizontal" data-bricky-select-a-brick>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Auswahl</label>
+                        <div class="col-md-3">
+                            <div class="rex-select-style">
+                                %s
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>            
+            ', $bricksSelect->get());
+
+            /*
+            $bricksSelectForm = sprintf('
+                <fieldset class="form-horizontal" data-bricky-select-a-brick>
                     <legend>kein Element ausgewählt</legend>
                     <div class="form-group">
                         <label class="col-md-2 control-label">Auswahl</label>
@@ -138,6 +152,7 @@ class Module
                     </div>
                 </fieldset>            
             ', $bricksSelect->get());
+            */
 
             $form = $bricksSelectForm.$form;
         }
