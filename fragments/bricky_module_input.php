@@ -4,15 +4,12 @@
         <ul class="nav nav-tabs" data-bricky="ctypes">
             <?php
             $ctypesOrderNew = explode(',',$this->ctypesOrder);
-            if ($ctypesOrderNew =='') {
-                $ctypesOrderNew = '1,2,3,4';
-            }
+
+
+            if ($ctypesOrderNew[0] == '') { $ctypesOrderNew = array(1,2,3,4); }
+
             for ($i = 1; $i <= $this->maxCtypes; $i++):
-
-                $ctypeID = $ctypesOrderNew[($i-1)];
-
-
-
+               $ctypeID = $ctypesOrderNew[($i-1)];
             ?>
                 <li data-id="<?= $ctypeID ?>">
                 <a id="tab-<?= $ctypeID ?>" href="#bricky-ctype-content-<?= $ctypeID ?>" data-toggle="tab">
