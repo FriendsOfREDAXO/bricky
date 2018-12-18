@@ -101,6 +101,23 @@ class Bricky
             "\n".
             'use Bricky\Bricky;'."\n".
             "\n".
-            'echo Bricky::getModule(\'REX_MODULE_ID\')->getOutput(\rex_var::toArray(\'REX_VALUE[1]\'));'."\n";
+            '$ctypesOrderOutput = explode(\',\',\'REX_VALUE[19]\');'."\n".
+            'if ($ctypesOrderOutput[0] == \'\') { $ctypesOrderOutput = array(1,2,3,4); }'."\n".
+            "\n".
+            '$gridOutput = \'REX_VALUE[20]\';'."\n".
+            "\n".
+            '$rex_value[1] = \'REX_VALUE[1]\';'."\n".
+            '$rex_value[2] = \'REX_VALUE[2]\';'."\n".
+            '$rex_value[3] = \'REX_VALUE[3]\';'."\n".
+            '$rex_value[4] = \'REX_VALUE[4]\';'."\n".
+            "\n".
+            'foreach ($ctypesOrderOutput as $v) {'."\n".
+            "\n".
+            'if ($rex_value[$v] != \'\') {'."\n".
+            "\n".
+            ' echo Bricky::getModule(\'REX_MODULE_ID\')->getOutput(\rex_var::toArray($rex_value[$v]));'."\n".
+            "\n".
+            '}'."\n".
+            '}';
     }
 }
