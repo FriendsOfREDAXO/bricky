@@ -405,12 +405,13 @@
     background: #f5f5f5;
     margin-bottom: 32px;
     padding: 16px;
+    min-height: 120px;
 
 }
 
 .bricky_backend_output h4 {
     font-size: 30px !important;
-    margin: 0 0 -56px 0;
+    margin: 0 0 -35px 0;
     color: #ddd;
     font-weight: bold;
 

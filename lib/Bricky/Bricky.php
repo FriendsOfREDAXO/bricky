@@ -84,45 +84,40 @@ class Bricky
     public static function getModuleInput()
     {
         return
-            '<?php'."\n".
-            "\n".
-            'use Bricky\Bricky;'."\n".
-            "\n".
-            'echo Bricky::getModule(\'REX_MODULE_ID\')'."\n".
-            '    ->setCtypesOrder(\'REX_VALUE['.self::VALUE_ID_CTYPES_ORDER.']\')'."\n".
-            '    ->setSelectedGrid(\'REX_VALUE['.self::VALUE_ID_SELECTED_GRID.']\')'."\n".
-            '    ->getInput();'."\n";
+            '<?php' . "\n" .
+            "\n" .
+            'use Bricky\Bricky;' . "\n" .
+            "\n" .
+            'echo Bricky::getModule(\'REX_MODULE_ID\')' . "\n" .
+            '    ->setCtypesOrder(\'REX_VALUE[' . self::VALUE_ID_CTYPES_ORDER . ']\')' . "\n" .
+            '    ->setSelectedGrid(\'REX_VALUE[' . self::VALUE_ID_SELECTED_GRID . ']\')' . "\n" .
+            '    ->getInput();' . "\n";
     }
 
     public static function getModuleOutput()
     {
         return
-            '<?php'."\n".
+            '<?php' . "\n" .
+            "\n" .
+            'use Bricky\Bricky;' . "\n" .
+            "\n" .
+            '$ctypesOrderOutput = explode(\',\',\'REX_VALUE[19]\');' . "\n" .
+            "\n" .
+            'if ($ctypesOrderOutput[0] == \'\') {'."\n" .
+            ' $ctypesOrderOutput = array(1,2,3,4);'. "\n" .
+            '};' . "\n".
+            "\n" .
+            ' $gridOutput   = \'REX_VALUE[20]\';'. "\n" .
+            ' $rex_value[1] = \'REX_VALUE[1]\';'. "\n" .
+            ' $rex_value[2] = \'REX_VALUE[2]\';'. "\n" .
+            ' $rex_value[3] = \'REX_VALUE[3]\';'. "\n" .
+            ' $rex_value[4] = \'REX_VALUE[4]\';'. "\n".
             "\n".
-            'use Bricky\Bricky;'."\n".
-            "\n".
-            '$ctypesOrderOutput = explode(\',\',\'REX_VALUE[19]\');'."\n".
-            'if ($ctypesOrderOutput[0] == \'\') { $ctypesOrderOutput = array(1,2,3,4); }'."\n".
-            "\n".
-            '$gridOutput = \'REX_VALUE[20]\';'."\n".
-            "\n".
-            '$rex_value[1] = \'REX_VALUE[1]\';'."\n".
-            '$rex_value[2] = \'REX_VALUE[2]\';'."\n".
-            '$rex_value[3] = \'REX_VALUE[3]\';'."\n".
-            '$rex_value[4] = \'REX_VALUE[4]\';'."\n".
-            "\n".
-            'foreach ($ctypesOrderOutput as $v) {'."\n".
-            "\n".
-            'if ($rex_value[$v] != \'\') {'."\n".
-            "\n".
-            ' echo \'<div class="form-horizontal bricky_backend_output">\';'."\n".
-            ' echo \'<h4>Bereich \' . $v . \'</h4>\';'."\n".
-            "\n".
-            ' echo Bricky::getModule(\'REX_MODULE_ID\')->getOutput(\rex_var::toArray($rex_value[$v]));'."\n".
-            "\n".
-            ' echo \'</div>\';'."\n".
-            "\n".
-            '}'."\n".
-            '}';
+            'foreach ($ctypesOrderOutput as $v) {'. "\n".
+            '    echo \'<div class="form-horizontal bricky_backend_output">\';'."\n".
+            '    echo \'<h4>Bereich '.$v.'</h4>\';'. "\n".
+            '    echo Bricky::getModule(\'REX_MODULE_ID\')->getOutput(\rex_var::toArray($rex_value[$v]));'."\n".
+            '    echo \'</div>\';'. "\n".
+            '}'. "\n";
     }
 }

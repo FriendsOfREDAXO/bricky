@@ -46,9 +46,6 @@ class Headline extends Brick
 
     public function getBackendOutput(array $brickValues)
     {
-
-
-
         $fragment = new \rex_fragment();
         foreach ($brickValues as $var => $value) {
             $fragment->setVar($var, $value, false);
@@ -59,7 +56,12 @@ class Headline extends Brick
 
     public function getFrontendOutput(array $brickValues)
     {
-        return sprintf('<%2$s>%1$s</%2$s>', $brickValues['TEXT'], $brickValues['TAG']);
+        $fragment = new \rex_fragment();
+        foreach ($brickValues as $var => $value) {
+            $fragment->setVar($var, $value, false);
+        }
+        return $fragment->parse('brick_headline_frontend_output.php');
+
     }
 
 }
