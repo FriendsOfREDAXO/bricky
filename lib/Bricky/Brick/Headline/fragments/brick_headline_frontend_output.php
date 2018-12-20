@@ -1,6 +1,6 @@
 <?php
 
-    $text = $this->getVar('TEXT', '');
-    $tag  = $this->getVar('TAG', '');
+$text = $this->getVar('TEXT', '');
+$tag = $this->getVar('TAG', '');
 
-    echo '<'.$tag.'>'.$text.'<'.$tag.'>';
+echo '<' . $tag . ' class="headline" >' . $text . '<' . $tag . '>';
