@@ -350,7 +350,7 @@
     color: #000;
 }
 .bricky-module-input .rex-page-nav .nav-tabs > li.active > a:not(.btn) {
-    opacity: 0.9;
+    opacity: 1;
 }
 
 .bricky-module-input .rex-page-nav .nav-tabs li > a{

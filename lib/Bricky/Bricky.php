@@ -115,9 +115,11 @@ class Bricky
             "\n".
             'foreach ($ctypesOrderOutput as $v) {'. "\n".
             '    echo \'<div class="form-horizontal bricky_backend_output">\';'."\n".
-            '    echo \'<h4>Bereich '.$v.'</h4>\';'. "\n".
-            '    echo Bricky::getModule(\'REX_MODULE_ID\')->getOutput(\rex_var::toArray($rex_value[$v]));'."\n".
-            '    echo \'</div>\';'. "\n".
+            '      if ($rex_value[$v] != \'\' ) {'."\n".
+            '        echo \'<h4>Bereich \'.$v.\'</h4>\';'. "\n".
+            '        echo Bricky::getModule(\'REX_MODULE_ID\')->getOutput(\rex_var::toArray($rex_value[$v]));'."\n".
+            '        echo \'</div>\';'. "\n".
+            '      }'. "\n".
             '}'. "\n";
     }
 }
