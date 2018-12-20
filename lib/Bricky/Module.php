@@ -126,7 +126,7 @@ class Module
             $bricksSelect->addOptions($bricksSelectOptions);
 
             $bricksSelectForm = sprintf('
-                <fieldset class="form-horizontal" data-bricky-select-a-brick>
+                <fieldset class="form-horizontal select_bricky" data-bricky-select-a-brick>
                     <div class="form-group">
                         <label class="col-md-2 control-label">Auswahl</label>
                         <div class="col-md-3">

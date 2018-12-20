@@ -4,8 +4,6 @@
         <ul class="nav nav-tabs" data-bricky="ctypes">
             <?php
             $ctypesOrderNew = explode(',',$this->ctypesOrder);
-
-
             if ($ctypesOrderNew[0] == '') { $ctypesOrderNew = array(1,2,3,4); }
 
             for ($i = 1; $i <= $this->maxCtypes; $i++):

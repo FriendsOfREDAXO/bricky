@@ -48,7 +48,6 @@ $(document).on('rex:ready', function (e, container) {
 
         }
 
-
         if (typeof $ctypesOrder !== 'undefined' && $ctypesOrder.length > 0) {
 
             $ctypes.sortable({

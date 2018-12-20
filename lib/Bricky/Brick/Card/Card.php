@@ -22,26 +22,27 @@ class Card extends Brick
     {
         return '
             <div class="form-group">
-                <label class="col-md-3">
+                <label class="col-md-2">
                     Titel
                 </label>
-                <div class="col-md-9">
+                <div class="col-md-10">
                     <input class="form-control" name="BRICK_INPUT_VALUE[TITLE]" type="text" />
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-md-3">
+                <label class="col-md-2">
                     Text
                 </label>
-                <div class="col-md-9">
-                    <textarea class="form-control" name="BRICK_INPUT_VALUE[TEXT]" rows="6"></textarea>
+                <div class="col-md-10">
+                    <textarea class="form-control cke5-editor" data-profile="default" data-lang="<?php echo \Cke5\Utils\Cke5Lang::getUserLang(); ?>" name="BRICK_INPUT_VALUE[TEXT]">BRICK_INPUT_VALUE[TEXT]</textarea>                    
+                    
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-md-3">
+                <label class="col-md-2">
                     Link setzen
                 </label>
-                <div class="col-md-9">
+                <div class="col-md-10">
                     BRICK_LINK[id=1]
                 </div>
             </div>';

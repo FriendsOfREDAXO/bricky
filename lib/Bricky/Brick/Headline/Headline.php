@@ -22,16 +22,21 @@ class Headline extends Brick
     {
         $s = new \rex_select();
         $s->setName('BRICK_INPUT_VALUE[TAG]');
-        $s->addOptions(['h1' => 'H1', 'h2' => 'H2', 'h3' => 'H3']);
+        $s->addOptions(['h1' => 'Überschrift 1 (H1) - Nur einmal pro Seite verwenden', 'h2' => 'Überschrift 2 (H2)', 'h3' => 'Überschrift 3 (H3)','h3' => 'Überschrift 4 (H4)','h5' => 'Überschrift 5 (H5)','h6' => 'Überschrift 6 (H6)']);
         return '
             <div class="form-group">
                 <label class="col-md-3">
-                    Text
+                    Überschrift
                 </label>
-                <div class="col-md-6">
+                <div class="col-md-9">
                     <input class="form-control" name="BRICK_INPUT_VALUE[TEXT]" type="text" />
                 </div>
-                <div class="col-md-3">
+            </div>                
+            <div class="form-group">
+                <label class="col-md-3">
+                    Art der Überschrift
+                </label>
+                <div class="col-md-9">
                     <div class="rex-select-style">
                         '.$s->get().'
                     </div>
@@ -41,7 +46,15 @@ class Headline extends Brick
 
     public function getBackendOutput(array $brickValues)
     {
-        return $this->getFrontendOutput($brickValues);
+
+
+
+        $fragment = new \rex_fragment();
+        foreach ($brickValues as $var => $value) {
+            $fragment->setVar($var, $value, false);
+        }
+        return $fragment->parse('brick_headline_backend_output.php');
+
     }
 
     public function getFrontendOutput(array $brickValues)
