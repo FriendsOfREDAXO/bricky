@@ -108,7 +108,7 @@ class Bricky
             '};' . "\n".
             "\n" .
             ' $gridOutput   = \'REX_VALUE[20]\';'. "\n" .
-            ' $gridCount = substr_count($gridOutput,\'-\')+1;'. "\n" .
+            ' $gridCount = explode(\'-\', $gridOutput);'. "\n" .
             "\n" .
             ' $rex_value[1] = \'REX_VALUE[1]\';'. "\n" .
             ' $rex_value[2] = \'REX_VALUE[2]\';'. "\n" .
@@ -117,7 +117,7 @@ class Bricky
             "\n".
             '$i = 0;'. "\n".
             'foreach ($ctypesOrderOutput as $v) {'. "\n".
-            '  if(++$i > $gridCount) break;'. "\n".
+            '  if(++$i > count($gridCount)) break;'. "\n".
             '  if(rex::isBackend()) {'. "\n".
             '      if ($rex_value[$v] != \'\' ) {'."\n".
             '        echo \'<div class="form-horizontal bricky_backend_output">\';'."\n".
@@ -133,5 +133,3 @@ class Bricky
             '}'. "\n";
     }
 }
-
-
