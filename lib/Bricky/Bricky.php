@@ -26,20 +26,20 @@ class Bricky
 
     private $availableGrids = [
         '12',
+        '6-6',
+        '4-4-4',
+        '3-3-3-3',
+        '6-3-3',
+        '3-6-3',
+        '3-3-6',
         '10-2',
         '9-3',
         '8-4',
         '7-5',
-        '6-6',
-        '5-7',
-        '4-8',
-        '3-9',
         '2-10',
-        '6-3-3',
-        '3-6-3',
-        '3-3-6',
-        '4-4-4',
-        '3-3-3-3',
+        '3-9',
+        '4-8',
+        '5-7'
     ];
 
     private $views = [
@@ -108,18 +108,30 @@ class Bricky
             '};' . "\n".
             "\n" .
             ' $gridOutput   = \'REX_VALUE[20]\';'. "\n" .
+            ' $gridCount = substr_count($gridOutput,\'-\')+1;'. "\n" .
+            "\n" .
             ' $rex_value[1] = \'REX_VALUE[1]\';'. "\n" .
             ' $rex_value[2] = \'REX_VALUE[2]\';'. "\n" .
             ' $rex_value[3] = \'REX_VALUE[3]\';'. "\n" .
             ' $rex_value[4] = \'REX_VALUE[4]\';'. "\n".
             "\n".
+            '$i = 0;'. "\n".
             'foreach ($ctypesOrderOutput as $v) {'. "\n".
-            '    echo \'<div class="form-horizontal bricky_backend_output">\';'."\n".
+            '  if(++$i > $gridCount) break;'. "\n".
+            '  if(rex::isBackend()) {'. "\n".
             '      if ($rex_value[$v] != \'\' ) {'."\n".
+            '        echo \'<div class="form-horizontal bricky_backend_output">\';'."\n".
             '        echo \'<h4>Bereich \'.$v.\'</h4>\';'. "\n".
             '        echo Bricky::getModule(\'REX_MODULE_ID\')->getOutput(\rex_var::toArray($rex_value[$v]));'."\n".
             '        echo \'</div>\';'. "\n".
             '      }'. "\n".
+            '  } else {'."\n".
+            '      if ($rex_value[$v] != \'\' ) {'."\n".
+            '        echo Bricky::getModule(\'REX_MODULE_ID\')->getOutput(\rex_var::toArray($rex_value[$v]));'."\n".
+            '      }'. "\n".
+            '  }'."\n".
             '}'. "\n";
     }
 }
+
+

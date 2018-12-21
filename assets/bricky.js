@@ -17,13 +17,11 @@ $(document).on('rex:ready', function (e, container) {
         var $selectedGrid = $module.find('[data-bricky="selectedGrid"]').val();
         var $view = $module.find('[data-bricky-view]').data('bricky-view');
 
-
         if (typeof $view !== 'undefined' && $view === 'SLICES') {
             // Alle fieldsets display none setzen
             $module.find('[data-bricky-selectable]').each(function(i) {
                 $(this).hide();
             });
-
 
             $(document).on('rex:ready', function (event, container) {
                 $('[data-bricky-select-a-brick] option:selected').each(function () {
@@ -39,6 +37,7 @@ $(document).on('rex:ready', function (e, container) {
             $module.find('[data-bricky-select-a-brick] option:selected').each(function(i) {
                 var value = $(this).val();
                 $(this).closest('[data-bricky-select-a-brick]').siblings('[data-bricky-selectable="'+value+'"]').show();
+
             });
 
             $(document).on('change', '[data-bricky-select-a-brick] select', function () {
