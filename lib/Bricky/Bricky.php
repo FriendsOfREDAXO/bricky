@@ -121,7 +121,7 @@ class Bricky
             '    if ($rex_value[$v] != \'\' ) {'."\n".
             '      if(rex::isBackend()) {'. "\n".
             '        echo \'<div class="form-horizontal bricky_backend_output">\';'."\n".
-            '        echo \'<h4>Bereich \'.$v.\'</h4>\';'. "\n".
+            '        echo \'<h4>Bereich \'.$i.\'</h4>\';'. "\n".
             '        echo Bricky::getModule(\'REX_MODULE_ID\')->getOutput(\rex_var::toArray($rex_value[$v]));'."\n".
             '        echo \'</div>\';'. "\n".
             '      } else {'."\n".
