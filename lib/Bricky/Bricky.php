@@ -130,6 +130,13 @@ class Bricky
             '        echo Bricky::getModule(\'REX_MODULE_ID\')->getOutput(\rex_var::toArray($rex_value[$v]));'."\n".
             '    }'. "\n".
             '  }'."\n".
-            '}'. "\n";
+            '}'. "\n".
+            ' echo \'<div class="bricky-module-input-grid-item" data-bricky-grid="\'.$gridOutput.\'">\';'."\n".
+            ' echo   \'<span class="bricky-module-input-grid-item-view">\';'. "\n".
+            '    for( $i= 1 ; $i <= count($gridCount) ; $i++ ) {'. "\n".
+            '        echo \'<span></span>\';'."\n".
+            '    }'. "\n".
+            '   echo \'</span>\';'. "\n".
+            ' echo \'</div>\';'. "\n";
     }
 }
