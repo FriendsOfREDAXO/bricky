@@ -10,7 +10,7 @@ requires:
 
 page:
     title: 'translate:title'
-    perm: bricky[]
+    perm: admin
     pjax: false
     icon: rex-icon fa-th
     subpages:
