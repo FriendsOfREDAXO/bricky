@@ -1,3 +1,0 @@
-<?php
-
-/* Hier kommt das Bootstrap Grid hin...

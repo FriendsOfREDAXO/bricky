@@ -227,7 +227,7 @@ class Module
         return $output;
     }
 
-    /**
+    /**ctype-
      * Erstellt ein nested Array anhand des Prefixes
      *  $blocks = [
      *      0 => [

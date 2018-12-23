@@ -1,5 +1,4 @@
 <?php
-
 if ($this->getVar('TEXT', '') != '') {
 
     echo '

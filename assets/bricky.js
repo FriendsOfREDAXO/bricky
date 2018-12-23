@@ -1,5 +1,4 @@
 $(document).on('rex:ready', function (e, container) {
-
     function brickyToggleCtypeContent($grid) {
         $grid = $grid.split('-');
         $ctypes.find('li:not([data-bricky-ctype="locked"])').css('display', 'none');
