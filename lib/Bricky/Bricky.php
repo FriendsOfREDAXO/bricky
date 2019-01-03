@@ -127,6 +127,7 @@ class Bricky
             '        echo Bricky::getModule(\'REX_MODULE_ID\')->getOutput(\rex_var::toArray($rex_value[$v]));'."\n".
             '        echo \'</div>\';'. "\n".
             '      } else {'."\n".
+            '        // an dieser Stelle müsste das Grid erstellt werden'."\n".
             '        echo Bricky::getModule(\'REX_MODULE_ID\')->getOutput(\rex_var::toArray($rex_value[$v]));'."\n".
             '    }'. "\n".
             '  }'."\n".
