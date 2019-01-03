@@ -131,14 +131,14 @@ class Bricky
             '    }'. "\n".
             '  }'."\n".
             '}'. "\n".
+            'if(rex::isBackend()) {'. "\n".
             ' echo \'<div class="bricky-module-input-grid-item" data-bricky-grid="\'.$gridOutput.\'">\';'."\n".
             ' echo   \'<span class="bricky-module-input-grid-item-view">\';'. "\n".
             '    for( $i= 1 ; $i <= count($gridCount) ; $i++ ) {'. "\n".
             '        echo \'<span></span>\';'."\n".
             '    }'. "\n".
             '   echo \'</span>\';'. "\n".
-            ' echo \'</div>\';'. "\n";
+            ' echo \'</div>\';'. "\n".
+            '}'. "\n";
     }
 }
-
-/* Hier noch Frontend / Backend berücksichtigen
