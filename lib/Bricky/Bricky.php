@@ -140,3 +140,5 @@ class Bricky
             ' echo \'</div>\';'. "\n";
     }
 }
+
+/* Hier noch Frontend / Backend berücksichtigen
