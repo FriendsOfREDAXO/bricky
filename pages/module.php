@@ -52,7 +52,7 @@ if ($func == '') {
     $content = $list->get();
 
     $fragment = new rex_fragment();
-    $fragment->setVar('title', $this->i18n('bricky_modules'));
+    $fragment->setVar('title', $this->i18n('bricky_module'));
     $fragment->setVar('content', $content, false);
     $content = $fragment->parse('core/page/section.php');
 

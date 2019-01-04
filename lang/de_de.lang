@@ -6,7 +6,6 @@ bricky_module = Bricky-Module
 bricky_module_exists = Dieses Modul existiert bereits
 bricky_module_id = REDAXO Modul ID
 bricky_module_name = REDAXO Modulname
-bricky_modules = Bricky-Module
 bricky_bricks = Bricks
 bricky_module_not_exists = ACHTUNG: Das Modul existiert nicht mehr
 bricky_title = Bricky
