@@ -110,7 +110,7 @@ switch ($gridOutput) {
             ' . $htmlContent[2] . '
         </div>' . PHP_EOL;
         break;
-        
+
     case '8-4':
         $fe_output[] = '
         <div class="col-xs-12 col-sm-8">

@@ -132,7 +132,7 @@ class Bricky
             '  }'."\n".
             '}'. "\n".
             'if(!rex::isBackend()) {'. "\n".
-            '    include "./redaxo/src/addons/bricky/fragments/bricky_grid_output_bootstrap4.php"; // Pfad noch korrgieren'."\n".
+            '    include "./redaxo/src/addons/bricky/fragments/bricky_grid_output_bootstrap4.php"; // Pfad noch korrgieren oder als (überschreibbares) Fragment implmentieren'."\n".
             '    echo implode($fe_output);'. "\n".
             '}'. "\n".
             'if(rex::isBackend()) {'. "\n".
