@@ -132,8 +132,16 @@ class Bricky
             '  }'."\n".
             '}'. "\n".
             'if(!rex::isBackend()) {'. "\n".
-            '    include "./redaxo/src/addons/bricky/fragments/bricky_grid_output_bootstrap4.php"; // Pfad noch korrgieren oder als (überschreibbares) Fragment implmentieren'."\n".
-            '    echo implode($fe_output);'. "\n".
+            '    $fragment = new rex_fragment();'. "\n".
+            '    $fragment->setVar( \'gridOutput\',$gridOutput,false);'. "\n".
+            '    for( $i= 0 ; $i <= 10 ; $i++ ) {'. "\n".
+            '        if(isset($htmlContent[$i])) {'. "\n".
+            '            $fragment->setVar( \'htmlContent_\'.$i,$htmlContent[$i],false);'. "\n".
+            '        } else {'. "\n".
+            '            $fragment->setVar( \'htmlContent_\'.$i,\'\',false);'. "\n".
+            '        }'. "\n".
+            '    }'. "\n".
+            '    echo $fragment->parse(\'bricky_grid_output_bootstrap4.php\');'. "\n".
             '}'. "\n".
             'if(rex::isBackend()) {'. "\n".
             ' echo \'<div class="bricky-module-input-grid-item" data-bricky-grid="\'.$gridOutput.\'">\';'."\n".
