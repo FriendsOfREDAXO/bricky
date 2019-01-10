@@ -141,7 +141,7 @@ class Bricky
             '            $fragment->setVar( \'htmlContent_\'.$i,\'\',false);'. "\n".
             '        }'. "\n".
             '    }'. "\n".
-            '    echo $fragment->parse(\'bricky_grid_output_bootstrap4.php\');'. "\n".
+            '    echo $fragment->parse(\'bricky_grid_output.php\');'. "\n".
             '}'. "\n".
             'if(rex::isBackend()) {'. "\n".
             ' echo \'<div class="bricky-module-input-grid-item" data-bricky-grid="\'.$gridOutput.\'">\';'."\n".

@@ -1,5 +1,7 @@
 <?php
 
+// Output for Bootstrap 4
+
 $fe_output[] = '<div class="container">
     <div class="row">';
 
