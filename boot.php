@@ -9,17 +9,19 @@
  * file that was distributed with this source code.
  */
 
-use Bricky\Brick\Card;
+
 use Bricky\Brick\Headline;
-use Bricky\Brick\Image;
-use Bricky\Brick\Video;
+use Bricky\Brick\Text;
+// use Bricky\Brick\Image;
+// use Bricky\Brick\Card;
 use Bricky\Bricky;
 use Bricky\Module;
 
-Bricky::getInstance()->addBrick(new Card());
 Bricky::getInstance()->addBrick(new Headline());
-Bricky::getInstance()->addBrick(new Image());
-Bricky::getInstance()->addBrick(new Video());
+Bricky::getInstance()->addBrick(new Text());
+
+// Bricky::getInstance()->addBrick(new Image());
+// Bricky::getInstance()->addBrick(new Card());
 
 \rex_fragment::addDirectory(\rex_path::addon('project', 'fragments/'));
 

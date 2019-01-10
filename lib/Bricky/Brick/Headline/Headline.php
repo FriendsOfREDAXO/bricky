@@ -15,7 +15,7 @@ class Headline extends Brick
 {
     public function getName()
     {
-        return 'Headline';
+        return 'Überschrift';
     }
 
 
