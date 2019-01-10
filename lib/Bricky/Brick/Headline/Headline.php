@@ -63,7 +63,5 @@ class Headline extends Brick
             $fragment->setVar($var, $value, false);
         }
         return $fragment->parse('brick_headline_frontend_output.php');
-        return;
     }
-
 }

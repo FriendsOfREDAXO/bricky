@@ -127,10 +127,13 @@ class Bricky
             '        echo Bricky::getModule(\'REX_MODULE_ID\')->getOutput(\rex_var::toArray($rex_value[$v]));'."\n".
             '        echo \'</div>\';'. "\n".
             '      } else {'."\n".
-            '        // an dieser Stelle müsste das Grid erstellt werden'."\n".
-            '        echo Bricky::getModule(\'REX_MODULE_ID\')->getOutput(\rex_var::toArray($rex_value[$v]));'."\n".
             '    }'. "\n".
+            '        $htmlContent[$i] = Bricky::getModule(\'REX_MODULE_ID\')->getOutput(\rex_var::toArray($rex_value[$v]));'."\n".
             '  }'."\n".
+            '}'. "\n".
+            'if(!rex::isBackend()) {'. "\n".
+            '    include "./redaxo/src/addons/bricky/fragments/bricky_grid_output_bootstrap4.php"; // Pfad noch korrgieren'."\n".
+            '    echo implode($fe_output);'. "\n".
             '}'. "\n".
             'if(rex::isBackend()) {'. "\n".
             ' echo \'<div class="bricky-module-input-grid-item" data-bricky-grid="\'.$gridOutput.\'">\';'."\n".
