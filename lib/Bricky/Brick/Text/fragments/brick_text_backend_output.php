@@ -1,6 +1,8 @@
 <?php
-if ($this->getVar('TEXT', '') != '') {
 
+
+if ($this->getVar('TEXT', '') != '') {
+    if ($this->getVar('TEXT', '') != '<p>&nbsp;</p>') { // CKE5 Editor Fix
     echo '
       <h3>Text</h3>
       <div class="form-group">
@@ -10,6 +12,7 @@ if ($this->getVar('TEXT', '') != '') {
           </div>
       </div>
       ';
+    }
 }
 
 
