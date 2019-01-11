@@ -421,10 +421,8 @@
 .bricky_backend_output h3 {
     font-size: 16px !important;
     font-weight: normal;
-    padding-bottom: 8px;
-    margin-bottom: 32px;
+    padding: 24px 0 8px 0;
     border-bottom: 1px solid #ddd;
-
 }
 
 
