@@ -1,7 +1,15 @@
 # Bricky
 
+
+Das Addon liefert das Ultimative-Eierlegende-Wollmilch-Sau-Modul mit der Möglichkeit mehrspaltige Inhalte beliebig zu verwalten!
+
+
 Module die Bricky nutzen, werden über Bricky selbst verwaltet.
 Das REDAXO-Modul wird automatisch erstellt und wird mit den sogenannten Bricks gefüttert.
+
+
+
+
 
 Das Modul enthält dann solchen PHP-Code 
 
