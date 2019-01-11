@@ -15,7 +15,7 @@ class Text extends Brick
 {
     public function getName()
     {
-        return 'Text';
+        return 'Text (CKEditor 5)';
     }
     public function getInput()
     {
@@ -26,7 +26,7 @@ class Text extends Brick
                     Text
                 </label>
                 <div class="col-md-9">
-                    <textarea class="form-control" name="BRICK_INPUT_VALUE[TEXT]">BRICK_INPUT_VALUE[TEXT]</textarea>
+                     <textarea class="form-control cke5-editor" data-profile="light" data-lang="<?php echo \Cke5\Utils\Cke5Lang::getUserLang(); ?>" name="BRICK_INPUT_VALUE[TEXT]">BRICK_INPUT_VALUE[TEXT]</textarea>
                 </div>
             </div>';
     }
@@ -50,5 +50,4 @@ class Text extends Brick
         return $fragment->parse('brick_text_frontend_output.php');
     }
 }
-
 
