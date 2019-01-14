@@ -40,28 +40,7 @@ $(document).on('rex:ready', function (e, container) {
             });
 
             $(document).on('change', '[data-bricky-select-a-brick] select', function () {
-
                 $(this).closest('[data-bricky-select-a-brick]').siblings('[data-bricky-selectable]').hide();
-
-                // Felder leeren
-                $(this).closest('[data-bricky-select-a-brick]').siblings('[data-bricky-selectable]').find(':input').each(function () {
-                    switch (this.type) {
-                        case 'button':
-                        case 'text':
-                        case 'textarea':
-                        case 'file':
-                        case 'email':
-                        case 'date':
-                        case 'number':
-                            $(this).val('');
-                            break;
-                        case 'checkbox':
-                        case 'radio':
-                            this.checked = false;
-                            break;
-                    }
-                });
-
                 $(this).closest('[data-bricky-select-a-brick]').siblings('[data-bricky-selectable="'+$(this).val()+'"]').show();
             });
 

@@ -11,7 +11,3 @@ if ($this->getVar('TEXT', '') != '') {
       </div>
       ';
 }
-
-
-
-
