@@ -15,7 +15,7 @@ class Text extends Brick
 {
     public function getName()
     {
-        return 'Text (CKEditor 5)';
+        return 'Text';
     }
     public function getInput()
     {
@@ -26,7 +26,7 @@ class Text extends Brick
                     Text
                 </label>
                 <div class="col-md-9">
-                     <textarea class="form-control cke5-editor" data-profile="light" name="BRICK_INPUT_VALUE[TEXT]">BRICK_INPUT_VALUE[TEXT]</textarea>
+                     <textarea class="form-control name="BRICK_INPUT_VALUE[TEXT]">BRICK_INPUT_VALUE[TEXT]</textarea>
                 </div>
             </div>';
     }
