@@ -433,6 +433,13 @@
     color: #777;
 }
 
+.bricky_backend_output .alert {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    color: #f00;
+}
+
 .bricky_backend_output .col-sm-9 {
     border-left: 1px solid #ddd;
 }

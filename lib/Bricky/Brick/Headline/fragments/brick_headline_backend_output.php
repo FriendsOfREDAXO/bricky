@@ -3,12 +3,18 @@
 
 if ($this->getVar('SHOW', '') == 'true') {
 
+    if ($this->getVar('TEXT', '') != '') {
+        $headline = $this->getVar('TEXT', '');
+    } else {
+        $headline = '<span class="alert">Bitte eine Überschrift angeben!<span>';
+    }
+
     echo '
       <h3>Überschrift</h3>
       <div class="form-group">
           <label class="col-sm-3 control-label">Überschrift</label>
           <div class="col-sm-9">
-          ' . $this->getVar('TEXT') . '
+          ' . $headline . '
           </div>
       </div>
       <div class="form-group">
