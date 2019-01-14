@@ -1,6 +1,6 @@
 <?php
 
-if ($this->getVar('TEXT', '') != '') {
+if ($this->getVar('SHOW', '') == 'true') {
     echo '
       <h3>Text</h3>
       <div class="form-group">

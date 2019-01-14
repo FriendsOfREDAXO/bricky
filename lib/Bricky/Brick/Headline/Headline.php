@@ -26,6 +26,7 @@ class Headline extends Brick
         $s->setName('BRICK_INPUT_VALUE[TAG]');
         $s->addOptions(['h1' => 'Überschrift 1 (H1) - Nur einmal pro Seite verwenden', 'h2' => 'Überschrift 2 (H2)', 'h3' => 'Überschrift 3 (H3)','h4' => 'Überschrift 4 (H4)','h5' => 'Überschrift 5 (H5)','h6' => 'Überschrift 6 (H6)']);
         return '
+            <input type="hidden" name="BRICK_INPUT_VALUE[SHOW]" class="show" value="false">
             <div class="form-group">
                 <label class="col-md-3">
                     Überschrift

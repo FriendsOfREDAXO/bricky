@@ -21,12 +21,13 @@ class Text extends Brick
     {
 
         return '
+            <input type="hidden" name="BRICK_INPUT_VALUE[SHOW]" class="show" value="false">
             <div class="form-group">
                 <label class="col-md-3">
                     Text
                 </label>
                 <div class="col-md-9">
-                     <textarea class="form-control" data-profile="light" name="BRICK_INPUT_VALUE[TEXT]">BRICK_INPUT_VALUE[TEXT]</textarea>
+                     <textarea class="form-control" name="BRICK_INPUT_VALUE[TEXT]">BRICK_INPUT_VALUE[TEXT]</textarea>
                 </div>
             </div>';
     }

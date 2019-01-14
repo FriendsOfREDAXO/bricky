@@ -41,7 +41,9 @@ $(document).on('rex:ready', function (e, container) {
 
             $(document).on('change', '[data-bricky-select-a-brick] select', function () {
                 $(this).closest('[data-bricky-select-a-brick]').siblings('[data-bricky-selectable]').hide();
+                $(this).closest('[data-bricky-select-a-brick]').siblings('[data-bricky-selectable]').find('.show').val('false');
                 $(this).closest('[data-bricky-select-a-brick]').siblings('[data-bricky-selectable="'+$(this).val()+'"]').show();
+                $(this).closest('[data-bricky-select-a-brick]').siblings('[data-bricky-selectable="'+$(this).val()+'"]').find('.show').val('true');
             });
 
         }

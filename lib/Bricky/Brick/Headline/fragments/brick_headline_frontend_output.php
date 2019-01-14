@@ -3,6 +3,6 @@
 $text = $this->getVar('TEXT', '');
 $tag = $this->getVar('TAG', '');
 
-if ($text != '') {
+if ($this->getVar('SHOW', '') == 'true') {
     echo '<' . $tag . ' class="headline" >' . $text . '</' . $tag . '>';
 }

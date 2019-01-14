@@ -1,4 +1,5 @@
 <?php
-if ($this->getVar('TEXT', '') != '') {
+
+if ($this->getVar('SHOW', '') == 'true') {
     echo $this->getVar('TEXT', '');
 }
