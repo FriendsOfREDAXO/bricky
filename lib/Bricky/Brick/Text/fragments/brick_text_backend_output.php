@@ -1,6 +1,5 @@
 <?php
 
-
 if ($this->getVar('TEXT', '') != '') {
     echo '
       <h3>Text</h3>
