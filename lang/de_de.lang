@@ -1,6 +1,6 @@
-bricks_select_notice = Wird ein Element abgewählt, kann es passieren das bisher angelegte Slices beim nächsten Speichern ihr Daten verlieren.
-bricky_bricks_registered = registrierte Elemente
-bricky_bricks_saved = bisher zugewiesene Elemente
+bricks_select_notice = Wird ein Brick abgewählt, kann es passieren das bisher angelegte Slices beim nächsten Speichern ihre Daten verlieren.
+bricky_bricks_registered = registrierte Bricks
+bricky_bricks_saved = bisher zugewiesene Brikcs
 bricky_grid = Raster
 bricky_module = Bricky-Module
 bricky_module_exists = Dieses Modul existiert bereits
