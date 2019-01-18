@@ -1,7 +1,8 @@
 
 - Bricky?
-    - Grundgedanke
-    - Funktionsweise  
+    - [Grundgedanke](main.grundgedanke.md)
+    - Funktionsweise
+    - Ausgabe anpassen  
 - Eigene Bricks entwicklen
     - Grundlagen
     - Project und Theme Addon
