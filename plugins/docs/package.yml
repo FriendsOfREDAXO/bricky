@@ -1,0 +1,9 @@
+package: bricky/docs
+version: '0.0'
+author: 'Friends Of REDAXO'
+supportpage: 'https://github.com/FriendsOfREDAXO/bricky'
+
+page:
+    title: 'translate:bricky_docs'
+    perm: admin
+    itemclass: pull-right 
