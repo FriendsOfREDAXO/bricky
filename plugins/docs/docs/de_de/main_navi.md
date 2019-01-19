@@ -1,7 +1,7 @@
 
 - Bricky?
     - [Grundgedanke](main.grundgedanke.md)
-    - Funktionsweise
+    - [Funktionsweise](main.funktionsweise.md)
     - Ausgabe anpassen  
 - Eigene Bricks entwicklen
     - Grundlagen

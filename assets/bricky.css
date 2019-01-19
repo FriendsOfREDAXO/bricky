@@ -398,6 +398,18 @@
     display: none;
 }
 
+.bricky-module-input .input_info {
+    margin-top: 16px;
+    border-left: 1px solid #ddd;
+}
+
+.bricky_backend_output .bricky_info {
+    background: #43b494;
+    color: #fff;
+    font-size: 12px;
+    padding: 8px;
+}
+
 
 
 .bricky_backend_output {
