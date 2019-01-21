@@ -1,10 +1,11 @@
 
+
 - Bricky?
-    - [Grundgedanke](main.grundgedanke.md)
-    - [Funktionsweise](main.funktionsweise.md)
-    - Ausgabe anpassen  
+    - [Intro](main_intro.md)
+    - [Funktionsweise](main_funktionsweise.md)
+    - [Ausgabe anpassen](main_ausgaben_anpassen.md)  
 - Eigene Bricks entwicklen
-    - Grundlagen
+    - Was ist ein Brick (Grundlage)
     - Project und Theme Addon
     - einen Editor einbinden
     - mForm nutzen

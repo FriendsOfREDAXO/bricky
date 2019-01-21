@@ -1,7 +1,7 @@
 # Funktionsweise
 
 
-### Bezeichnungen
+## Bezeichnungen
 
 | Name | Beschreibung |
 | - | - |
