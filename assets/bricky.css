@@ -170,11 +170,16 @@
     width: 16.6667%;
 }
 
+
 .bricky-module-input .nav-tabs > li i {
     display: none;
 }
 .bricky-module-input .nav-tabs > li span {
     display: inline-block;
+}
+
+.bricky-module-input li:hover {
+    cursor: pointer;
 }
 
 @media (max-width: 767px) {
