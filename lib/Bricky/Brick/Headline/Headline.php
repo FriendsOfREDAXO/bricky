@@ -18,7 +18,6 @@ class Headline extends Brick
         return 'Überschrift';
     }
 
-
     public function getInput()
     {
 

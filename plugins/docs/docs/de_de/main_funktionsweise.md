@@ -5,7 +5,7 @@
 
 | Name | Beschreibung |
 | - | - |
-| Bricky | AddOnname |
+| Bricky | AddOn Name |
 | Brick | Ein Baustein/Element welches man dem Modul zuführen kann (Headline, Image etc.) | 
 | Ctypes | Sind bei Bricky die Tabs bzw. deren Inhalte (könnten theoretisch auch anders als Tabs dargestellt werden) |
 | Darstellung Normal | Alle Bricks/Bausteine sind in einem MBlock zu sehen |

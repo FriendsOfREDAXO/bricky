@@ -5,7 +5,7 @@
     - [Funktionsweise](main_funktionsweise.md)
     - [Ausgabe anpassen](main_ausgaben_anpassen.md)
 - Eigene Bricks entwicklen
-    - Was ist ein Brick (Grundlage)
+    - [Was ist ein Brick (Grundlage)](was_ist_ein_brick.md)
     - Project und Theme Addon
 - Beispiele
     - Überschrift (Text & Select)
