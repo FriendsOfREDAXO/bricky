@@ -59,8 +59,8 @@ Brick ist ein Addon um einfach individuelle Module zu erstellen
 **Was wird vom Addon geliefert?**
 
 - 2-5 "Beispielbricks" (Fragmente überschreibbar)
-- ein Beispielraster (BS4) für die Ausgabe (Fragment überschreibbar)
-- eine ausfühlriche Anleitung wie eigene Bricks erstellt werden können bzw. das ausgegebene Raste angepasst werden kann.
+- ein Beispielraster (Bootstrap 4) für die Ausgabe (Fragment überschreibbar)
+- eine ausfühlriche Anleitung wie eigene Bricks erstellt werden können bzw. das ausgegebene Raster angepasst werden kann.
 
 **Wie ist ein Brick aktuell aufgebaut?**
 
